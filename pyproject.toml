@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pascal-voc-yolo-detector"
+version = "0.1.0"
+description = "YOLOv1-style object detection on Pascal VOC with PyTorch"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.2",
+  "torchvision>=0.17",
+  "numpy>=1.26",
+  "matplotlib>=3.8",
+  "pandas>=2.1",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "nbformat>=5.10", "nbclient>=0.10"]
+
+[project.scripts]
+voc-yolo-train = "pascal_voc_yolo.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
